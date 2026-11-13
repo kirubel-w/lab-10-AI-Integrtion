@@ -1,0 +1,32 @@
+<!-- Tell the user what to enter in the form -->
+<p>Enter the ingredients you have and any dietary needs and we'll create a custom recipe with what you have on hand</p>
+
+<!-- Form to collect ingredients and send them to the server using POST -->
+<form id="ingredient-form" action="/generate_recipe" method="POST">
+    <!-- Text area where the user enters their ingredients -->
+    <label class="form-label" for="ingredients">Ingredients:</label>
+    <textarea class="form-control" id="ingredients" name="ingredients"></textarea>
+
+    <!-- Button to submit the form -->
+    <input class="btn btn-primary" id="submit-button" type="submit">
+
+    <script>
+
+        // Select the form and submit button from the page
+        let ingredientForm = document.querySelector('#ingredient-form')
+        let ingredientSubmitButton = document.querySelector('#submit-button')
+
+        // Ensure button is enabled and says "Submit" when the page is loaded
+        window.addEventListener('pageshow', function () {
+            ingredientSubmitButton.disabled = false
+            ingredientSubmitButton.value = "Submit"
+        })
+
+        // Disable button and change button text to "Creating..." when the user 
+        // has entered valid data in the form and clicked the submit button 
+        ingredientForm.addEventListener('submit', function () {
+            ingredientSubmitButton.value = "Creating..."
+            ingredientSubmitButton.disabled = true
+        })
+
+    </script>

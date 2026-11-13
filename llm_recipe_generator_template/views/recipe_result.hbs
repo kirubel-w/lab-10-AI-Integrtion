@@ -1,0 +1,48 @@
+<!-- Display the recipe results heading -->
+<h1>Recipe Results</h1>
+
+<!-- Show the ingredients entered by the user -->
+<p>You entered: "{{userIngredients}}"</p>
+
+<!-- Check if the recipe was generated successfully -->
+{{#if recipeJSON.success}}
+
+<!-- Introduce the generated recipe -->
+<p>Here's a recipe using those ingredients:</p>
+
+<!-- Display the name of the generated recipe -->
+<h2>{{recipeJSON.recipeName}}</h2>
+
+<!-- Display the recipe description -->
+<h2>Description</h2>
+
+<p>{{recipeJSON.description}}</p>
+
+<!-- Display the list of ingredients -->
+<h3>Ingredients</h3>
+
+<ul>
+    <!-- Loop through each ingredient in the recipe -->
+    {{#each recipeJSON.ingredients}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+
+<!-- Display the cooking instructions -->
+<h3>Instructions</h3>
+
+<ul>
+    <!-- Loop through each cooking instruction -->
+    {{#each recipeJSON.instructions}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+
+<!-- Show an error message if a recipe could not be generated -->
+{{else}}
+
+<h2>Sorry, we couldn't create a recipe.</h2>
+<p>{{recipeJSON.errorMessage}}</p>
+
+<!-- End the if statement -->
+{{/if}}
